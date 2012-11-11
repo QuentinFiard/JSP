@@ -1,0 +1,90 @@
+@CHARSET "UTF-8";
+
+#countdownContent {
+	position:relative;
+	color:#fff;
+	text-align:center;
+}
+
+#countdownContent #background {
+	position:absolute;
+	z-index:1;
+	display:block;
+	width:100%;
+}
+
+#countdownContent .title {
+	position:relative;
+	font-size:30px;
+	line-height:60px;
+	z-index:2;
+}
+
+#countdownContent .subtitle {
+	position:relative;
+	font-size:30px;
+	line-height:60px;
+	z-index:2;
+}
+
+#countdownContent #compteurs_wrapper {
+	position:absolute;
+	height:116px;
+	top:50%;
+	width:100%;
+	margin-top:-58px;
+	z-index:2;
+}
+
+#countdownContent #compteurs 
+{
+	width:484px;
+	margin:0 auto;
+}
+
+
+#countdownContent #compteurs #jours_d0
+{
+    margin-right:20px;
+}
+
+#countdownContent #compteurs #heures_d0
+{
+    margin-right:20px;
+}
+
+#countdownContent #compteurs #minutes_d0
+{
+    margin-right:20px;
+}
+
+#countdownContent #compteurs .legende
+{
+    float:left;
+    width:106px;
+    text-align:center;
+    margin-right:20px;
+	
+	font-size:18px;
+	text-shadow:0px 1px 3px #000;
+	
+	font-weight:bold;
+    
+    margin-top:-8px;
+}
+/*
+
+Styling the counter itself.
+Set image paths accordingly.
+
+THIS YOU NEED TO KEEP.
+
+So you can have multiple counters on a page, just make sure each one has a class of "flip-counter".
+
+*/
+
+.flip-counter ul.cd{float:left;list-style-type:none;margin:0;padding:0}
+.flip-counter li{background:url(../img/digits.png) 0 0 no-repeat}
+.flip-counter li.t{background-position:0 0;width:53px;height:39px}
+.flip-counter li.b{background-position:0 0;width:53px;height:64px}
+.flip-counter li.s{background-position:-53px -1030px;width:14px;height:103px}

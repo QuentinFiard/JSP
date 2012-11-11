@@ -1,0 +1,106 @@
+#inscriptionContent {
+	position:relative;
+}
+
+#inscriptionContent #background {
+	position:absolute;
+	width:100%;
+	bottom:0;
+	z-index:1;
+}
+
+#inscriptionContent .wrapper {
+	position:absolute;
+	z-index:2;
+
+	height:550px;
+	width:650px;
+	top:50%;
+	left:50%;
+	margin-top:-275px;
+	margin-left:-325px;
+
+	background-color: rgba(255,255,255,0.9);
+	
+	-moz-box-shadow:0 0 30px rgba(0,0,0,0.75);
+	-webkit-box-shadow:0 0 30px rgba(0,0,0,0.75);
+	box-shadow:0 0 30px rgba(0,0,0,0.75);
+	
+	
+	-webkit-border-radius:10px;
+	-moz-border-radius:10px;
+	border-radius:10px;
+
+	overflow:hidden;
+}
+
+#inscriptionContent .wrapper > .title {
+	text-align:center;
+	font-variant: small-caps;
+	font-family: Gill Sans;
+	font-size: 20px;
+	line-height:35px;
+}
+
+#inscriptionContent h2:first-of-type {
+	margin-top:0;
+}
+
+#inscriptionContent h2 {
+	font-size:16px;
+	margin-top:15px;
+	display:block;
+	clear:both;
+	margin-bottom:5px;
+	font-family:Arial;
+}
+
+#inscriptionContent .summary {
+	overflow:hidden;
+}
+
+#inscriptionContent .summary .title {
+	float:left;
+	width:49%;
+	margin-right:2%;
+	text-align:right;
+	clear:left;
+}
+
+#inscriptionContent .summary .value {
+	float:left;
+	text-align:left;
+}
+
+#inscriptionContent .address {
+	text-align:center;
+	margin-bottom:10px;
+}
+
+#inscriptionContent .wrapper .content {
+	font-size:16px;	
+	padding:10px;
+	font-family:Times New Roman;
+}
+
+#inscriptionContent p {
+	margin-bottom:10px;
+	text-align:justify;
+}
+
+#inscriptionContent .primaryButton {
+	display:block;
+	margin:0 auto;
+	margin-top:10px;
+}
+
+#inscriptionContent form label {
+	margin-left:5px;
+	position:relative;
+	top:2px;
+}
+
+#inscriptionContent form {
+	margin-top:15px;
+	text-align:center;
+}

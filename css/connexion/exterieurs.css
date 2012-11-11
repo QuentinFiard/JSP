@@ -1,0 +1,176 @@
+@CHARSET "UTF-8";
+
+.exterieursContent {
+	background: url(../../img/background3.jpg) center;
+	background-size: auto 100%;
+}
+
+
+.exterieursContent #wrapper {
+	position:absolute;
+	height:440px;
+	margin-top:-220px;
+	width:100%;
+	top:50%;
+	text-align: center;
+}
+
+.exterieursContent.full #wrapper {
+	height:600px;
+	margin-top:-300px;	
+}
+
+.exterieursContent .menu {
+	margin: 0 auto;
+
+	height:100%;
+	width:500px;
+	background-color: rgba(255,255,255,0.9);
+	
+	-moz-box-shadow:0 0 30px rgba(0,0,0,0.75);
+	-webkit-box-shadow:0 0 30px rgba(0,0,0,0.75);
+	box-shadow:0 0 30px rgba(0,0,0,0.75);
+	
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+	border-radius:5px;
+
+	cursor:pointer;
+
+	position:relative;
+}
+
+.menu > .content {
+	padding:15px 30px;
+	height:490px;
+	
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+	border-radius:5px;
+}
+
+.menu .title {
+	font-variant: small-caps;
+	font-family: Gill Sans;
+	font-size: 25px;
+}
+
+.menu .section .title {
+	text-align : left;
+	font-size:18px;
+}
+
+.menu .section {
+	margin-top:15px;
+}
+
+
+
+/*
+ * External login form
+ */
+
+.exterieursContent form {
+	width:70%;
+	margin:0 auto;
+	z-index:10;
+}
+
+.exterieursContent form .content {
+	height:100%;
+	width:100%;
+
+	overflow:hidden;
+}
+
+.exterieursContent form .buttons > * {
+	display:inline-block;
+}
+
+.exterieursContent form .title {
+	color:#fff;
+	font-size:16px;
+	margin: 15px 0 0px 0;
+	text-align:left;
+}
+
+.exterieursContent form .title:first-of-type{
+	margin-top:0;
+	margin-bottom:7px;
+	padding-top:0;
+	border-top: none;
+}
+
+.exterieursContent form .wrapper {
+	padding:15px 15px 10px;
+	text-align:center;
+
+	overflow:hidden;
+}
+
+.exterieursContent form fieldset {
+	padding-left:35px;
+	padding-right:6px;
+}
+
+.exterieursContent form label img {
+	width:40px;
+	float:left;
+	margin-left: -43px;
+	margin-top:1px;
+}
+
+.exterieursContent form .field {
+	line-height:45px;
+	height:45px;
+}
+
+.exterieursContent form .buttons {
+	margin-top:5px;
+	width:142.8%;
+	margin:0 -21.4%;
+	overflow:hidden;
+}
+
+.exterieursContent form .buttons > * {
+	width:80px;
+	float:right;
+	margin-right:0;
+}
+
+.exterieursContent form .field input {
+	line-height:25px;
+	font-size:14px;
+	width:100%;
+}
+
+.exterieursContent .field.captcha {
+	margin-top:10px;
+	overflow:hidden;
+	height:inherit;
+	padding-right: 10px;
+	margin-right: -10px;
+}
+
+.exterieursContent .field.captcha img {
+	display:block;
+	float:left;
+	width:45%;
+	height:auto;
+}
+
+.exterieursContent .field.captcha #captcha_code {
+	display:block;
+	float:right;
+	margin-right:-5px;
+	width:50%;
+	margin-top:7px;
+}
+
+.exterieursContent .field.captcha a {
+	display:block;
+	clear:both;
+	width:45%;
+	line-height:20px;
+	text-decoration:none;
+}

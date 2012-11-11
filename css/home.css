@@ -1,0 +1,65 @@
+/*
+ * Content
+ */
+
+#homeContent #background {
+	width:100%;
+}
+
+#homeContent > .logo {
+	position:absolute;
+	width:29%;
+    left:5%;
+    top:20px;
+}
+
+#homeContent .home_label {
+	display:block;
+	position:absolute;
+	width:21%;
+    left:9%;
+    bottom:20px;
+	z-index:10;
+	overflow:hidden;
+}
+
+#homeContent .home_label img {
+	float:left;
+	margin-right:-100%;
+}
+
+#homeContent .home_label img.defaultImage {
+	visibility:visible;
+}
+
+#homeContent .home_label:hover img.defaultImage {
+	visibility:hidden;	
+}
+
+#homeContent .home_label:active img.defaultImage {
+	visibility:hidden;	
+}
+
+#homeContent .home_label img.hoverImage {
+	visibility:hidden;	
+}
+
+#homeContent .home_label:hover img.hoverImage {
+	visibility:visible;	
+}
+
+#homeContent .home_label:active img.hoverImage {
+	visibility:hidden;	
+}
+
+#homeContent .home_label img.activeImage {
+	visibility:hidden;	
+}
+
+#homeContent .home_label:hover img.activeImage {
+	visibility:hidden;	
+}
+
+#homeContent .home_label:active img.activeImage {
+	visibility:visible;	
+}

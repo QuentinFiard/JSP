@@ -1,0 +1,12 @@
+/*
+ * Content
+ */
+
+#homeContent #background {
+	width:100%;
+}
+
+#mailConfirmationBox .alert_box {
+	height:130px;	
+	margin-top:-65px;
+}

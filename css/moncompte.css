@@ -1,0 +1,165 @@
+@CHARSET "UTF-8";
+
+#monCompteContent {
+	background: url(../img/background3.jpg) center;
+	background-size: auto 100%;
+}
+
+
+#monCompteContent #wrapper {
+	position:absolute;
+	height:515px;
+	margin-top:-220px;
+	width:100%;
+	top:50%;
+	text-align: center;
+}
+
+#monCompteContent.frankiz #wrapper {
+	height:516px;
+	margin-top:-258px;
+}
+
+#monCompteContent.ext #wrapper {
+	height:476px;
+	margin-top:-238px;
+}
+
+#monCompteContent.frankiz.nonickname #wrapper {
+	height:491px;
+	margin-top:-245px;
+}
+
+#monCompteContent .menu {
+	margin: 0 auto;
+
+	height:100%;
+	width:700px;
+	background-color: rgba(255,255,255,0.9);
+	
+	-moz-box-shadow:0 0 30px rgba(0,0,0,0.75);
+	-webkit-box-shadow:0 0 30px rgba(0,0,0,0.75);
+	box-shadow:0 0 30px rgba(0,0,0,0.75);
+	
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+	border-radius:5px;
+
+	cursor:pointer;
+
+	position:relative;
+}
+
+#monCompteContent .menu > .content {
+	padding:15px 15px;
+	height:490px;
+	
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+	border-radius:5px;
+}
+
+#monCompteContent .menu > .title {
+	font-family: Gill Sans;
+	font-size: 18px;
+	line-height:35px;
+}
+
+#monCompteContent section section {
+	margin-top:20px;
+	
+	-moz-box-shadow:0 0 8px rgba(0,0,0,0.3);
+	-webkit-box-shadow:0 0 8px rgba(0,0,0,0.3);
+	box-shadow:0 0 8px rgba(0,0,0,0.3);
+	
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+	border-radius:5px;
+
+	overflow:hidden;
+}
+
+#monCompteContent section section:first-of-type {
+	margin-top:15px;
+}
+
+#monCompteContent section a {
+	text-decoration:none;
+}
+
+#monCompteContent section section .content {
+	padding:10px;
+}
+
+#monCompteContent section section > .title {
+	font-weight:bold;
+	line-height:25px;
+	background-color:#1c8eff;
+	color:#fff;
+}
+
+#monCompteContent .menu .content > section {
+}
+
+#monCompteContent .menu .content > section > .title {
+	font-weight:bold;
+	text-align:left;
+}
+
+#monCompteContent section section .content > .title {
+	text-align:left;
+	margin-bottom:10px;
+}
+
+#monCompteContent .fieldset {
+	overflow:hidden;
+	display:inline-block;
+}
+
+#monCompteContent .field * {
+	line-height:25px;
+}
+
+#monCompteContent .field .name {
+	float:left;
+	width:100px;
+	text-align:right;
+	clear:left;
+	font-weight:bold;
+	margin-right:15px;
+}
+
+#monCompteContent .field .value {
+	float:left;
+	text-align:left;
+}
+
+#monCompteContent .field .unit {
+	float:left;
+	text-align:left;
+	width:30px;
+}
+
+#monCompteContent .field input {
+	display:block;
+	float:left;
+	margin-top:2px;
+}
+
+#monCompteContent .field input.button {
+	display:none;
+}
+
+#monCompteContent .field input.value {
+	text-align:right;
+	line-height:15px;
+	margin-right:5px;
+}
+
+#monCompteContent section {
+	margin-top:15px;
+}
+
+#monCompteContent section:first-of-type {
+	margin-top:0;
+}
