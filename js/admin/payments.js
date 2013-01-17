@@ -1,3 +1,5 @@
+var lastRequest = null;
+
 function updateUsers(data)
 {
 	var table = $('#users');
@@ -8,14 +10,24 @@ function updateUsers(data)
 	}
 	table.html('');
 	var header = $('<tr></tr>');
-	var keys = data['keys'];
 	var th;
+	th = $('<th></th>');
+	header.append(th);
+	th = $('<th>Numéro de réservation</th>');
+	header.append(th);
+	var keys = data['keys'];
+	
 	for(var i=0 ; i<keys.length ; i++)
 	{
-		th = $('<th></th>');
-		th.text(keys[i]);
-		header.append(th);
+		if(keys[i]!='userId')
+		{
+			th = $('<th></th>');
+			th.text(keys[i]);
+			header.append(th);
+		}
 	}
+	th = $('<th>Status</th>');
+	header.append(th);
 	th = $('<th>Prix à payer</th>');
 	header.append(th);
 	th = $('<th>Caution à payer</th>');
@@ -35,7 +47,10 @@ function updateUsers(data)
 	var users = data['users'];
 	var price = data['price'];
 	var caution = data['caution'];
+	var subvention = data['subvention'];
 	var hasPaid = data['hasPaid'];
+	var waitingList = data['waitingList'];
+	var reservationId = data['reservationId'];
 	
 	for(var i=0 ; i<users.length ; i++)
 	{
@@ -43,14 +58,39 @@ function updateUsers(data)
 		{
 			var tr = $('<tr></tr>');
 			var td;
+			td = $('<td></td>');
+			td.text(i+1);
+			tr.append(td);
+			td = $('<td></td>');
+			td.text(reservationId[i]);
+			tr.append(td);
 			for(var j=0 ; j<keys.length ; j++)
 			{
-				td = $('<td></td>');
-				td.text(users[i][j]);
-				tr.append(td);
+				if(keys[j]!='userId')
+				{
+					td = $('<td></td>');
+					td.text(users[i][j]);
+					tr.append(td);
+				}
 			}
 			td = $('<td></td>');
-			td.text(price[i]+"€");
+			if(waitingList[i])
+			{
+				td.text("Liste d'attente");
+			}
+			else
+			{
+				td.text("Liste principale");
+			}
+			tr.append(td);
+			
+			td = $('<td></td>');
+			var text = price[i]+" €";
+			if(subvention[i])
+			{
+				text += " + "+subvention[i]+" € (non encaissé)";
+			}
+			td.text(text);
 			tr.append(td);
 			td = $('<td></td>');
 			td.text(caution[i]+"€");
@@ -67,6 +107,13 @@ function updateUsers(data)
 		else
 		{
 			var tr = $('<tr></tr>');
+			var td;
+			td = $('<td></td>');
+			td.text(i+1);
+			tr.append(td);
+			td = $('<td></td>');
+			td.text(reservationId[i]);
+			tr.append(td);
 			
 			var hidden = $('<input type="hidden" name="confirmPayment" value="true"/>');
 			tr.append(hidden);
@@ -82,23 +129,41 @@ function updateUsers(data)
 				{
 					userId = users[i][j];
 				}
-				var td = $('<td></td>');
-				td.text(users[i][j]);
-				tr.append(td);
+				else
+				{
+					var td = $('<td></td>');
+					td.text(users[i][j]);
+					tr.append(td);
+				}
 			}
 			hidden = $('<input type="hidden" name="userId"/>');
 			hidden.val(userId);
 			tr.append(hidden);
 			
+			td = $('<td></td>');
+			if(waitingList[i])
+			{
+				td.text("Liste d'attente");
+			}
+			else
+			{
+				td.text("Liste principale");
+			}
+			tr.append(td);
 
 			td = $('<td></td>');
-			td.text(price[i]+"€");
+			var text = price[i]+" €";
+			if(subvention[i])
+			{
+				text += " + "+subvention[i]+" € (non encaissé)";
+			}
+			td.text(text);
 			tr.append(td);
 			hidden = $('<input type="hidden" name="price"/>');
 			hidden.val(price[i]);
 			tr.append(hidden);
 			td = $('<td></td>');
-			td.text(caution[i]+"€");
+			td.text(caution[i]+" €");
 			tr.append(td);
 			hidden = $('<input type="hidden" name="caution"/>');
 			hidden.val(caution[i]);
@@ -117,6 +182,12 @@ function updateUsers(data)
 
 function getUsers(evt)
 {
+	if(lastRequest)
+	{
+		wasCanceled = true;
+		lastRequest.abort();
+		lastRequest=null;
+	}
 	var form = $('#filters');
 	var path = form.attr('action');
 	var data = form.serialize();
@@ -126,7 +197,8 @@ function getUsers(evt)
 		type:'post',
 		data:data
 	}
-	$.ajax(serverUrl+path,settings).done(function(data){
+	wasCanceled = false;
+	lastRequest = $.ajax(serverUrl+path,settings).done(function(data){
 		if(data['success'])
 		{
 			updateUsers(data);
@@ -216,6 +288,5 @@ function submitPaymentConfirm(button)
 $(document).ready(function(){
 	$('#filters select').change(getUsers);
 	$('#filters input').keyup(getUsers);
-	
 	getUsers();
 })

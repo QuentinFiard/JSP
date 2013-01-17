@@ -2,6 +2,8 @@
 
 namespace pages\events;
 
+use pages\admin\AddToMainListPage;
+
 use structures\events\SemaineReveillon;
 
 require_once 'classes/nav/EventPage.php';

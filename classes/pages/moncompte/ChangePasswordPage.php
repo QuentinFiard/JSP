@@ -71,7 +71,7 @@ class ChangePasswordPage extends ExternalUserOnlyPage {
 				{
 					return $res;
 				}
-				$digest = hex2bin($digest);
+				$digest = Miscellaneous::hex2bin($digest);
 			}
 
 			$digest_old = null;
@@ -87,7 +87,7 @@ class ChangePasswordPage extends ExternalUserOnlyPage {
 				{
 					return $res;
 				}
-				$digest_old = hex2bin($digest_old);
+				$digest_old = Miscellaneous::hex2bin($digest_old);
 			}
 			
 			global $user;

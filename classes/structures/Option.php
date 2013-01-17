@@ -1,7 +1,7 @@
 <?php
 
 namespace structures;
-	
+
 require_once 'classes/database/Database.php';
 
 use database\Database;
@@ -12,15 +12,17 @@ class Option {
 	private $eventId;
 	private $name;
 	private $description;
+	private $textDescription;
 	private $price_x;
 	private $price_ext;
+	private $isRental;
 
 	public function __construct($event,$row)
 	{
 		$this->event = $event;
 		$this->updateWithData($row,true);
 	}
-	
+
 	public function updateWithData($data,$constructor=false)
 	{
 		$properties = self::getProperties();
@@ -36,12 +38,17 @@ class Option {
 			}
 		}
 	}
-	
+
 	public static function optionWithOptionId($optionId)
 	{
 		return Database::shared()->optionWithOptionId($optionId);
 	}
-	
+
+	public static function optionWithNameForEvent($name,$event)
+	{
+		return Database::shared()->getOptionWithNameForEvent($name,$event);
+	}
+
 	public static function optionsForEvent($event)
 	{
 		return Database::shared()->optionsForEvent($event);
@@ -49,9 +56,9 @@ class Option {
 
 	public static function getProperties()
 	{
-		return array("optionId","eventId","name","description","price_x","price_ext");
+		return array("optionId","eventId","name","description","textDescription","price_x","price_ext",'isRental');
 	}
-	
+
 	public function getProperty($key)
 	{
 		if(!in_array($key, self::getProperties()))
@@ -60,7 +67,7 @@ class Option {
 		}
 		return $this->$key;
 	}
-	
+
 	public function getOptionId() {
 		return $this->optionId;
 	}
@@ -81,12 +88,33 @@ class Option {
 		return $this->description;
 	}
 
+	public function getTextDescription() {
+		return $this->textDescription;
+	}
+
 	public function getPrice_x() {
 		return $this->price_x;
 	}
 
 	public function getPrice_ext() {
 		return $this->price_ext;
+	}
+
+	public function getIsRental()
+	{
+		return $this->isRental;
+	}
+
+	public function getPriceForUser($user)
+	{
+		if($user->isAdherentKes())
+		{
+			return $this->price_x;
+		}
+		else
+		{
+			return $this->price_ext;
+		}
 	}
 
 	public function setOptionId($optionId) {
@@ -121,7 +149,7 @@ class Option {
 	{
 		Database::shared()->saveOption($this);
 	}
-	
+
 	public function drop()
 	{
 		Database::shared()->dropOption($this);

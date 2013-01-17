@@ -20,11 +20,18 @@ class EventPage extends RegisteredOnlyPage {
 	public function checkSecurityGrant() {
 		parent::checkSecurityGrant();
 		
+		global $user;
+		
 		if(!RequestInformation::isAjax() || !isset($_GET['getDetails']))
 		{
 			if($this->event->haveReservationsStarted())
 			{
 				header('Location: '.Server::getServerRoot().substr($this->childWithName('inscription')->getPath(), 1));
+				exit();
+			}
+			else if($user->hasReservationForEvent($this->event))
+			{
+				header('Location: '.Server::getServerRoot().substr($this->childWithName('inscription')->childWithName('configuration')->getPath(), 1));
 				exit();
 			}
 			else

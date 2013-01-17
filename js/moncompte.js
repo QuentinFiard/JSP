@@ -7,7 +7,7 @@ function handleChangeValueResponse(data,form)
 		
 		if(data['out_of_range'] || data['invalid_value'])
 		{
-			alert('La valeur indiquée est invalide, merci de vérifier les données entrées !');
+			alert('La valeur indiquée est invalide, merci de vérifier les données entrées.');
 		}
 	}
 	else
@@ -87,6 +87,7 @@ function showChangePasswordBox()
 
 $(document).ready(function(){
 	$('nav .current').removeClass('current');
+	$('form').unbind('submit');
 	$('form').submit(updateValue);
 	$('form input.value').keydown(valueChange).keyup(valueChange).change(valueChange);
 	$('form input.button').fadeTo(0,0);

@@ -1,0 +1,56 @@
+\documentclass[a4paper,12pt]{article}
+
+\input{../data}
+\input{packages}
+\input{commandes}
+
+\newcounter{row}
+
+\newcommand{\rowend}{&&&&\tabularnewline}
+\newcommand{\rowstart}{\hline \stepcounter{row}\therow&}
+\newcommand{\roomLeader}{X}
+
+\newcommand{\canceledrowstart}{\hline \rowcolor{black!80} \stepcounter{row}\canceled \therow&}
+\newcommand{\trainrowstart}{\hline \rowcolor{black!40} \stepcounter{row}\train \therow&}
+
+\newcommand{\canceled}{\color{white}}
+\newcommand{\train}{\color{black}}
+
+\newcommand{\canceledcell}{\cellcolor{black!80}\color{white}}
+\newcommand{\traincell}{\cellcolor{black!40}\color{black}}
+
+\begin{document}
+
+\rowcolors{2}{white}{black!5}
+
+\setmainfont{Helvetica Neue Light}
+\fontsize{10}{12}
+\selectfont
+
+\input{entetes_listing}
+
+\str{1.5}
+\begin{longtable}{|c|>{\centering}m{1.5cm}|l|l|p{1cm}|p{1cm}|p{1cm}|p{1cm}|}
+
+\hline
+&Chef de chambre ? &\centering Nom&\centering Prénom\rowend
+\endhead
+
+\hline
+\endfoot
+
+\rows
+\rowstart&&\rowend
+\rowstart&&\rowend
+\rowstart&&\rowend
+\rowstart&&\rowend
+\rowstart&&\rowend
+\rowstart&&\rowend
+\rowstart&&\rowend
+\rowstart&&\rowend
+\rowstart&&\rowend
+\rowstart&&\rowend
+
+\end{longtable}
+
+\end{document}

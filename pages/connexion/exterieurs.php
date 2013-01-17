@@ -68,6 +68,12 @@ global $currentPage;
 								<label id="lastnameLabel" for="lastnameNewUser"><img src="" /></label>
 								<input id="lastnameNewUser" name="lastname" type="text" required="required" placeholder="Nom de famille" />
 							</div>
+							<div class="checkboxField">
+								<div class="input_wrapper">
+									<input type="checkbox" id="isCadreX" name="isCadreX" type="text" />
+								</div>
+								<label id="isCadreXLabel" for="isCadreX">Cadre militaire de l'École polytechnique <br/>(validation nécessaire)</label>
+							</div>
 							<div class="field captcha">
 								<img id="captcha" src="<?php echo Server::getServerRoot(); ?>securimage/securimage_show.php" alt="CAPTCHA Image" />
 								<input id="captcha_code" type="text" name="captcha_code" required="required" placeholder="Code de sécurité" size="10" maxlength="6" />

@@ -14,11 +14,11 @@ function handleFormSubmit(event)
 		{
 			if('css' in data)
 			{
-				$('head').append('<link rel="stylesheet" href="'+json['css']+'" type="text/css" />');
+				$('head').append('<link rel="stylesheet" href="'+data['css']+'" type="text/css" />');
 			}
 			if('js' in data)
 			{
-				$.getScript(json['js']);
+				$.getScript(data['js']);
 			}
 			var box = $(data['content']);
 			
@@ -30,9 +30,13 @@ function handleFormSubmit(event)
 		}
 		else
 		{
-			if(data['must_agree'])
+			if('must_agree' in data)
 			{
-				alert("Merci d'indiquer que vous acceptez les conditions d'inscription avant de vous inscrire.");
+				alert("Tu dois indiquer que tu acceptes les conditions d'inscription avant de pouvoir t'inscrire.");
+			}
+			else if('reservation_closed' in data)
+			{
+				alert("Les inscriptions sont maintenant fermées. À l'année prochaine !")
 			}
 			else
 			{
@@ -62,5 +66,6 @@ $(document).ready(function(){
 	button.addClass('current');
 	
 	correctWindowSize();
+	$('form').unbind('submit');
 	$('form').submit(handleFormSubmit);
 })

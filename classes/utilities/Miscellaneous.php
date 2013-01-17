@@ -57,11 +57,11 @@ class Miscellaneous {
 		{
 			self::initAllowedCharacters();
 		}
-		$hex = bin2hex($bytes);
+		$hex = \bin2hex($bytes);
 		$res="";
 		for($i=0 ; $i<strlen($bytes) ; $i++)
 		{
-			$byte = hexdec(substr($hex, 2*$i,2));
+			$byte = \hexdec(substr($hex, 2*$i,2));
 			$index = $byte%count(self::$allowedCharacters);
 			$res .= self::$allowedCharacters[$index];
 		}
@@ -87,6 +87,25 @@ class Miscellaneous {
 	static public function checkSize($size)
 	{
 		return $size>=32 && $size<= 52;
+	}
+	
+	static function hex2bin( $data ) {
+		/* Original code by josh <at> superfork.com */
+	
+		$len = strlen($data);
+		$newdata = '';
+		for( $i=0; $i < $len; $i += 2 ) {
+			$newdata .= pack( "C", hexdec( substr( $data, $i, 2) ) );
+		}
+		return $newdata;
+	}
+	
+	static function isInt($var)
+	{
+		if (strval(intval($var)) == strval($var)) {
+			return true;
+		}
+		return false;
 	}
 }
 

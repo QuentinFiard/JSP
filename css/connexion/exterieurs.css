@@ -8,16 +8,16 @@
 
 .exterieursContent #wrapper {
 	position:absolute;
-	height:440px;
-	margin-top:-220px;
+	height:460px;
+	margin-top:-230px;
 	width:100%;
 	top:50%;
 	text-align: center;
 }
 
 .exterieursContent.full #wrapper {
-	height:600px;
-	margin-top:-300px;	
+	height:620px;
+	margin-top:-310px;	
 }
 
 .exterieursContent .menu {
@@ -124,6 +124,31 @@
 	line-height:45px;
 	height:45px;
 }
+
+.exterieursContent form .checkboxField {
+	position:relative;
+	text-align:left;
+	font-weight:bold;
+	line-height:15px;
+	margin:3px 0;
+}
+
+.exterieursContent form .checkboxField .input_wrapper {
+	position:absolute;
+	left:-43px;
+	width:40px;
+	text-align:center;
+}
+
+.exterieursContent form .checkboxField input {
+}
+
+
+.exterieursContent form .checkboxField label {
+	position:relative;
+	top:1px;
+}
+
 
 .exterieursContent form .buttons {
 	margin-top:5px;

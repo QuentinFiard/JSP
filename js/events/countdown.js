@@ -24,7 +24,7 @@ function updateCounters()
 	
 	if(timeLeft<=0)
 	{
-		location.reload();
+		window.location.reload(true);
 	}
     
     var nbSecondes = Math.floor(timeLeft/1000);
@@ -43,6 +43,7 @@ function updateCounters()
 
 $(document).ready(function(){
 	var timestamp = $('#countdownContent #startDate').val();
+	var now = $('#countdownContent #now').val();
 
 	$('nav .current').removeClass('current');
 	var button = $('#'+$('#eventButton').val());
@@ -56,12 +57,22 @@ $(document).ready(function(){
     minutes = new flipCounter('minutes', {value:99, inc:0, pace:600, auto:false});
     secondes = new flipCounter('secondes', {value:99, inc:0, pace:600, auto:false});
     
-	if(timestamp!='INF')
+	if(timestamp && timestamp!='INF')
 	{
 		startDate = new Date(timestamp*1000);
+		if(now && now!='INF')
+		{
+			var now = new Date(now*1000);
+			var offset = now.getTime()-(new Date()).getTime();
+			startDate = new Date(startDate.getTime()-offset);;
+		}
 	    
 		setInterval(updateCounters,1000);
 	    
 	    updateCounters();
 	}
+});
+
+$(document).ready(function(){
+	$('nav .current').removeClass('current');
 });

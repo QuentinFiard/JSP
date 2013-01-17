@@ -1,0 +1,36 @@
+\pagestyle{fancy}
+
+\renewcommand{\headrulewidth}{0pt}
+
+\fancyhead{}
+\fancyfoot{}
+
+\fancyhead[L]{
+\begin{textblock}{200}(7,10)
+\includegraphics[width=5cm]{./img/logo.png}
+\end{textblock}
+}
+
+\fancyhead[C]{\vspace{0.8cm}
+\setmainfont{Helvetica Neue Light}
+\fontsize{18}{21}
+\selectfont
+\hspace{3.5cm}Bus n°\busNumber\;- \bus\;- \nbOfPlaces\;places
+}
+
+\fancyfoot[L]{
+\setmainfont{Helvetica Neue Light}
+\fontsize{14}{18}
+\selectfont
+\thepage/\pageref{LastPage}
+}
+
+\fancyfoot[R]{
+\setmainfont{Helvetica Neue Light}
+\fontsize{14}{18}
+\selectfont
+%\bus
+\begin{tabular}{>{\centering}c>{\centering}p{1cm}>{\centering}c}
+\canceledcell Annulation probable&\cellcolor{white}&\traincell Train
+\end{tabular}
+}

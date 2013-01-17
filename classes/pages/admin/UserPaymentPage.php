@@ -116,8 +116,11 @@ class UserPaymentPage extends \nav\AdminOnlyPage {
 
 			$res['users'] = array();
 			$res['price'] = array();
+			$res['subvention'] = array();
 			$res['caution'] = array();
 			$res['hasPaid'] = array();
+			$res['waitingList'] = array();
+			$res['reservationId'] = array();
 			
 			foreach($users as $user)
 			{
@@ -130,8 +133,20 @@ class UserPaymentPage extends \nav\AdminOnlyPage {
 				
 				$res['users'][] = $tmp;
 				$res['price'][] = $event->priceForUser($user);
+				$option = $user->getOptionWithNameLikeForEvent('subvention',$event);
+				if($option)
+				{
+					$res['subvention'][] = -$option->getPriceForUser($user);
+				}
+				else
+				{
+					$res['subvention'][] = false;
+				}
 				$res['caution'][] = $event->cautionForUser($user);
 				$res['hasPaid'][] = !$user->hasToPayForEvent($event);
+				$res['waitingList'][] = $user->isOnWaitingListForEvent($event);
+				$reservation = $user->getReservationForEvent($event);
+				$res['reservationId'][] = $reservation['reservationId'];
 			}
 			
 			$res['success'] = true;

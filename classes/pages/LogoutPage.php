@@ -3,7 +3,6 @@
 namespace pages;
 
 use nav\RegisteredOnlyPage;
-
 require_once 'classes/nav/RegisteredOnlyPage.php';
 
 use nav\LeafPage;

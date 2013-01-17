@@ -9,6 +9,7 @@ global $event;
 ?>
 <div id="countdownContent" class="content">
 	<input id="startDate" type="hidden" value="<?php echo $event->getReservationStart(); ?>" />
+	<input id="now" type="hidden" value="<?php echo time(); ?>" />
 	<input id="eventButton" type="hidden" value="buttonEvent<?php echo $event->getEventId(); ?>" />
 	<img draggable="false" id="background" src="<?php echo Server::getServerRoot(); ?>img/background2.jpg" />
 	<div class="title">Les inscriptions pour <?php 

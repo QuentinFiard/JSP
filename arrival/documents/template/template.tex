@@ -1,0 +1,35 @@
+\documentclass[a4paper,12pt]{article}
+
+\input{../data}
+\input{packages}
+\input{commandes}
+
+\newcommand{\step}[1]{\item #1}
+
+\begin{document}
+
+\setmainfont{Helvetica Neue Light}
+
+\input{entetes}
+\begin{textblock}{200}(156,-2)
+\includegraphics[width=5cm]{./img/bracelet\bracelet.eps}
+\end{textblock}
+\begin{center}
+\fontsize{20}{24}
+\selectfont
+\name\\
+\vspace{0.3cm}
+\fontsize{16}{20}
+\selectfont
+\ifthenelse{\isChefChambre=1}{Chef de chambre}{}
+\end{center}
+
+\fontsize{20}{24}
+\selectfont
+\vfill
+\begin{enumerate}
+\steps
+\end{enumerate}
+\vfill
+\vfill
+\end{document}

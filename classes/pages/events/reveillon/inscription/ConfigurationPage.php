@@ -2,15 +2,19 @@
 
 namespace pages\events\reveillon\inscription;
 
-use structures\events\SemaineReveillon;
+use pages\events\reveillon\inscription\configuration\UpdatePersonalDataPage;
 
-use nav\AfterReservationPage;
+use utilities\Miscellaneous;
 
-require_once 'classes/nav/AfterReservationPage.php';
+use pages\events\reveillon\inscription\configuration\SuccessPage;
+use pages\events\reveillon\inscription\configuration\RoomsPage;
 
-require_once 'classes/structures/events/SemaineReveillon.php';
+require_once 'classes/pages/events/inscription/ConfigurationPage.php';
+require_once 'classes/pages/events/reveillon/inscription/configuration/RoomsPage.php';
+require_once 'classes/pages/events/reveillon/inscription/configuration/SuccessPage.php';
+require_once 'classes/pages/events/reveillon/inscription/configuration/UpdatePersonalDataPage.php';
 
-class ConfigurationPage extends AfterReservationPage {
+class ConfigurationPage extends \pages\events\inscription\ConfigurationPage {
 	private static $page = null;
 	
 	public static function getPage()
@@ -25,10 +29,10 @@ class ConfigurationPage extends AfterReservationPage {
 	public function __construct()
 	{
 		parent::__construct("configuration","JSP - Configuration de l'inscription à la semaine du réveillon");
-	}
-	
-	function getEvent() {
-		return SemaineReveillon::shared();
+
+		$this->addChild(RoomsPage::getPage());
+		$this->addChild(SuccessPage::getPage());
+		$this->addChild(UpdatePersonalDataPage::getPage());
 	}
 
 }

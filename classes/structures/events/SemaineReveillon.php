@@ -29,6 +29,15 @@ class SemaineReveillon extends Event {
 	{
 		return \pages\events\ReveillonPage::getPage();
 	}
+	
+	public function getNameWithPrefixA() {
+		return 'à la semaine du réveillon';
+	}
+	
+	public function getNameWithPrefixPour() {
+		return 'pour la semaine du réveillon';
+	}
+
 }
 
 ?>

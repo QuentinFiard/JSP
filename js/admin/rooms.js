@@ -40,3 +40,8 @@ function changeSelectedRoom(select)
 		handlePageChangeFailure(path,data);
 	});
 }
+
+$(document).ready(function(){
+	$('form').unbind('submit');
+	$('form').submit(handleFormSubmit);
+});

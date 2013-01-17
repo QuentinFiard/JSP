@@ -18,7 +18,12 @@ global $user;
 	
 		<p>Les JSP, pour Journées de Ski Polytechniciennes, consistent en un long week-end de janvier au ski, avec compétitions et soirées inoubliables. Chaque année les JSP réunissent environ 500 élèves et amis d'élèves dans une station sympathique, pour trois jours et trois nuits de glisse et de fiesta.</p>
 		<p>C'est un événement bipromo, on y va plutôt pour le ski ou plutôt pour la fête suivant les goûts ; c'est pension complète et activités à gogo, l'organisation s'occupe de tout ! Tu rêvais d’un WEI à la neige ? Les JSP l’ont fait !</p>
-	
+		
+		<?php if($user->isCadreX()) {?>
+		<h2>Remarque importante</h2>
+		<p>Pour les cadres, le voyage jusqu'à SuperDévoluy n'est pas compris dans le tarif. Vous devez vous rendre sur place le samedi matin par vos propres moyens.</p>
+		<?php } ?>
+		
 		<img id="superdevoluy" class="shadow" src="<?php echo Server::getServerRoot();?>img/superdevoluy.jpg" />
 		
 		<h3><b><i>
@@ -58,10 +63,21 @@ global $user;
 				$prix_base = WeekendJSP::shared()->priceForUser($user);
 				echo $prix_base; 
 				?> € de base (sans location de matériel)<?php 
-				$database = Database::shared();
-				if($user->is2010() && $database->hasConfigurationField('subvention_kes_vos')) {
-					$prix = $prix_base - $database->getConfigurationFieldAsDouble('subvention_kes_vos');
-				?>, <?php echo $prix; ?> € si tu n'es pas allé au VOS<?php 
+				$option = WeekendJSP::shared()->getOptionWithName('x2011_subvention_vos');
+				if($user->is2011() && $option) {
+				?>, <?php echo $prix_base+$option->getPriceForUser($user); ?> € si tu n'es pas allé au VOS<?php 
+				}
+				if($user->is2010()) {
+					$option1 = WeekendJSP::shared()->getOptionWithName('x2010_subvention_vos_2A');
+					$option2 = WeekendJSP::shared()->getOptionWithName('x2010_subvention_vos_2A_et_3A');
+					if($option1) {
+					?>, <?php echo $prix_base+$option1->getPriceForUser($user); ?> € si tu n'es pas allé au VOS cette année
+					<?php 
+					}
+					if($option2) {
+					?>, <?php echo $prix_base+$option2->getPriceForUser($user); ?> € si tu n'es allé au VOS ni cette année ni l'an dernier
+					<?php
+					}
 				}
 				?>.
 			</p>

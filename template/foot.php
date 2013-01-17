@@ -18,10 +18,16 @@ use \utilities\Server;
 			<div class="sponsor">
 				<img id="pernodricard" src="<?php echo Server::getServerRoot(); ?>img/pernodricard.jpg" />
 			</div>
+			<div class="sponsor">
+				<img id="redbull" src="<?php echo Server::getServerRoot(); ?>img/redbull.jpg" />
+			</div>
+			<div class="sponsor">
+				<img id="manix" src="<?php echo Server::getServerRoot(); ?>img/manix.jpg" />
+			</div>
 		</div>
 		<div class="right">
 			<img id="lapin" onclick="handleRabbitClick" src="<?php echo Server::getServerRoot(); ?>img/lapin.png" />
-			<!-- <div id="copyright">Copyright Quentin Fiard 2012</div> -->
+			<div id="copyright">Quentin Fiard © 2012</div>
 		</div>
 	</footer>
 	<canvas id="canvas"></canvas>

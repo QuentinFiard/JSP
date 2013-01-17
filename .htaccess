@@ -1,11 +1,7 @@
-AuthType Basic
-AuthName "Nouveau site JSP"
-AuthUserFile .htpasswd
-require valid-user
-
 Options +FollowSymlinks
 RewriteEngine On
 RewriteOptions MaxRedirects=10
 RewriteRule (.*)shared.js $1shared.php [L]
+RewriteRule (.*)extranet/(.*).js $1extranet/$2.php [L]
 RewriteRule ^.+/?((?:img/|fonts/|css/|js/).*)$ $1 [L]
-RewriteRule ^((?!index.php|.*/?img/|.*/?fonts/|.*/?css/|.*/?js/|.*/?swf/|.*/?sound/|.*/?securimage/).*)$ index.php?page=/$1 [B,L,QSA]
+RewriteRule ^((?!index.php|.*/?img/|.*/?arrival/|.*/?scripts/|.*/?fonts/|.*/?css/|.*/?js/|.*/?swf/|.*/?sound/|.*/?securimage/).*)$ index.php?page=/$1 [B,L,QSA]

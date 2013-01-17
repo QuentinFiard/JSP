@@ -63,6 +63,7 @@ function submitForgottenPasswordForm(event)
 }
 
 $(document).ready(function(){
+	$('#forgottenPasswordBox form').unbind('submit');
 	$('#forgottenPasswordBox form').submit(submitForgottenPasswordForm)
 	$('#forgottenPasswordEmail').focus();
 });

@@ -83,6 +83,7 @@ function submitChangePasswordForm(event)
 }
 
 $(document).ready(function(){
+	$('.alert_box form').unbind('submit');
 	$('.alert_box form').submit(submitChangePasswordForm)
 	$('#old_password').focus();
 });

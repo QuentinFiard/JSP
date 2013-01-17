@@ -34,7 +34,6 @@ require_once('classes/utilities/Server.php');
 use \pages\events;
 
 global $user;
-
 ?>
 <!doctype html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://ogp.me/ns/fb#" xml:lang="fr">
@@ -102,7 +101,7 @@ global $user;
 				<li id="buttonEvent<?php echo WeekendJSP::shared()->getEventId(); ?>" <?php if($currentPage->getPath() == WeekendJSP::shared()->getPagePath()){ ?>class="current" <?php } ?>onclick="handleNavButtonClick(this,'<?php echo WeekendJSP::shared()->getPagePath(); ?>');"><a>Weekend JSP</a></li>
 					<?php } ?>
 				<?php } ?>
-				<?php if(isset($user) && $user->isAdmin()) {?>
+				<?php if(isset($user) && $user->isMember()) {?>
 				<li id="buttonAdmin" <?php if($currentPage->getPath() == AdminPage::getPage()){ ?>class="current" <?php } ?>onclick="handleNavButtonClick(this,'<?php echo AdminPage::getPage()->getPath(); ?>');"><a>Admin</a></li>
 				<?php } ?>
 				<li class="end">&nbsp;</li>
@@ -120,7 +119,7 @@ global $user;
 				<a onclick="goToPage('<?php echo MyAccountPage::getPage()->getPath(); ?>');">Mon compte</a>
 			</li>
 			<?php if($user->isFrankizUser()) {?>
-			<li onclick="frankizLogout();" class="warningButton">
+			<li onclick="frankizLogout('<?php echo Server::getServerRoot(); ?>logout');" class="warningButton">
 				<a>Déconnexion (Frankiz)</a>
 			</li>
 			<?php } else { ?>

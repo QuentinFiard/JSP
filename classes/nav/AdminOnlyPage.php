@@ -14,11 +14,14 @@ class AdminOnlyPage extends RegisteredOnlyPage {
 		parent::checkSecurityGrant();
 		
 		global $user;
-		if(!$user->isAdmin())
+		if(!$user->isMember())
 		{
 			header('Location: '.Server::getServerRoot());
 			exit();
 		}
+	}
+	protected function getPageStylePath() {
+		return 'css/admin.css';
 	}
 	
 }

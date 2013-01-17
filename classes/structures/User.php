@@ -2,10 +2,14 @@
 
 namespace structures;
 
+use utilities\Miscellaneous;
+
 require_once("classes/structures/Session.php");
 require_once("classes/structures/SecurityLevel.php");
 
 require_once 'classes/database/Database.php';
+
+require_once 'classes/utilities/Miscellaneous.php';
 
 use \database\Database;
 
@@ -26,7 +30,12 @@ class User {
 	
 	public static function currentUser()
 	{
-		return Session::getValueForKey('user');
+		$userId = Session::getValueForKey('userId');
+		if(!$userId)
+		{
+			return null;
+		}
+		return self::userWithUserId($userId);
 	}
 	
 	public static function getProperties()
@@ -39,7 +48,6 @@ class User {
 		return array('userId','firstname','lastname','email');
 	}
 	
-	// TODO - Insert your code here
 	public function __construct($data) {
 		$this->updateWithData($data,true);
 	}
@@ -137,6 +145,11 @@ class User {
 		return false;
 	}
 	
+	public function is2011()
+	{
+		return false;
+	}
+	
 	public function getUserId() {
 		return $this->userId;
 	}
@@ -169,7 +182,7 @@ class User {
 	
 	public function isOnWaitingListForEvent($event)
 	{
-		return !$this->isOnMainListForEvent($event);
+		return $this->hasReservationForEvent($event) && !$this->isOnMainListForEvent($event);
 	}
 	
 	public function getReservationForEvent($event)
@@ -191,12 +204,105 @@ class User {
 	
 	public function hasReservationForEvent($event)
 	{
-		return Database::shared()->exitsReservationForUserAndEvent($this,$event);;
+		return Database::shared()->existsReservationForUserAndEvent($this,$event);;
+	}
+	
+	public function getRoomForEvent($event)
+	{
+		return Database::shared()->getRoomForUserAndEvent($this,$event);
+	}
+	
+	public function hasRoomForEvent($event)
+	{
+		return Database::shared()->existsRoomForUserAndEvent($this,$event);
+	}
+	
+	public function dropRoomForEvent($event)
+	{
+		Database::shared()->dropRoomForUserAndEvent($this,$event);
+	}
+	
+	public function setRoomForEvent($room,$event)
+	{
+		Database::shared()->setRoomForUserAndEvent($room,$this,$event);
+	}
+	
+	public function getBusForEvent($event)
+	{
+		return Database::shared()->getBusForUserAndEvent($this,$event);
+	}
+	
+	public function hasBusForEvent($event)
+	{
+		return Database::shared()->existsBusForUserAndEvent($this,$event);
+	}
+	
+	public function dropBusForEvent($event)
+	{
+		Database::shared()->dropBusForUserAndEvent($this,$event);
+	}
+	
+	public function setBusForEvent($bus,$event)
+	{
+		Database::shared()->setBusForUserAndEvent($bus,$this,$event);
+	}
+	
+	public function getOptionsForEvent($event)
+	{
+		return Database::shared()->getOptionsForUserAndEvent($this,$event);
+	}
+	
+	public function getOptionWithNameLikeForEvent($name,$event)
+	{
+		return Database::shared()->getOptionWithNameLikeForUserAndEvent($name,$this,$event);
+	}
+	
+	public function hasOption($option)
+	{
+		return Database::shared()->userHasOption($this,$option);
+	}
+	
+	public function removeOptionsForEvent($event)
+	{
+		Database::shared()->removeOptionsForUserAndEvent($this,$event);
+	}
+	
+	public function addOption($option)
+	{
+		Database::shared()->addOptionForUser($option,$this);
+	}
+	
+	public function dropOption($option)
+	{
+		Database::shared()->dropOptionForUser($option,$this);
+	}
+	
+	public function cancelReservationForEvent($event)
+	{
+		Database::shared()->cancelReservationForUserAndEvent($this,$event);
+	}
+	
+	public function arePersonalDataValid()
+	{
+		return ($this->weight!=null && Miscellaneous::checkWeight($this->weight))
+			&& ($this->height!=null && Miscellaneous::checkHeight($this->height))
+			&& ($this->size!=null && Miscellaneous::checkSize($this->size));
+	}
+	
+	public function switchToMainListForEvent($event)
+	{
+		Database::shared()->switchUserToMainListForEvent($this,$event);
+		$event->sendSwitchToMainListEmailToUser($this);
 	}
 	
 	public function save()
 	{
 		Database::shared()->saveUser($this);
+	}
+	
+	public function isNonCotisant()
+	{
+		return true;
 	}
 	
 	public function getFirstname() {
@@ -253,6 +359,43 @@ class User {
 
 	public function setSize($size) {
 		$this->size = $size;
+	}
+	
+	static public function cmp($user1,$user2)
+	{
+		$res = strcasecmp($user1->getLastname(), $user2->getLastname());
+		if($res==0)
+		{
+			$res = strcasecmp($user1->getFirstname(), $user2->getFirstname());
+		}
+		return $res;
+	}
+
+	public function isCotisant() {
+		return false;
+	}
+	
+	public function isCadreX()
+	{
+		return false;
+	}
+	
+	public function hasRentalForEvent($event)
+	{
+	    return ($this->getRentalForEvent($event)!=null);
+	}
+	
+	public function getRentalForEvent($event)
+	{
+	    $options = $this->getOptionsForEvent($event);
+	    foreach($options as $option)
+	    {
+	        if($option->getIsRental())
+	        {
+	            return $option;
+	        }
+	    }
+	    return null;
 	}
 
 }

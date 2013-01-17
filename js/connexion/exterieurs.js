@@ -173,6 +173,8 @@ function submitCreateAccountForm(event)
 
 $(document).ready(function(){
 	prepareLoginForm();
+	$('#knownUser form').unbind('submit');
 	$('#knownUser form').submit(submitLoginForm);
+	$('#newUser form').unbind('submit');
 	$('#newUser form').submit(submitCreateAccountForm);
 });

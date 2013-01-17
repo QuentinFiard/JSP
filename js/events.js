@@ -237,6 +237,6 @@ $(document).ready(function(){
 	$('#events_wrapper').click(handleBackgroundClick);
 	$('#events').click(handleBackgroundClick);
 	
-
+	$(window).unbind('statechange');
 	$(window).bind('statechange',handleStateChangeBis);
 });

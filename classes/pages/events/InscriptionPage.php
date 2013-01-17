@@ -43,6 +43,12 @@ class InscriptionPage extends AfterReservationStartPage {
 		$res['success']=false;
 		if(isset($_POST['confirmReservation']))
 		{
+			$event = $this->getEvent();
+			if($event->haveReservationsStopped())
+			{
+				$res['reservation_closed'] = true;
+				return $res;
+			}
 			if(!isset($_POST['conditions_agreement']))
 			{
 				$res['must_agree']=true;
@@ -50,20 +56,30 @@ class InscriptionPage extends AfterReservationStartPage {
 			}
 			
 			global $user;
-			$event = $this->getEvent();
 			
+			Database::shared()->lockAddReservationTables();
 			Database::shared()->addReservationForUserAndEvent($user,$event);
 
-			if($user->isOnMainListForEvent($event))
+			$isOnMainList = $user->isOnMainListForEvent($event);
+			
+			Database::shared()->unlockTables();
+			
+			if($event->isGagnantPlace($user))
 			{
-				return $this->childWithName('mainlist')->handleAjaxRequest();
-			}
-			if($user->isOnWaitingListForEvent($event))
-			{
-				return $this->childWithName('waitinglist')->handleAjaxRequest();
+				$option = $event->getOptionWithName('lotery_winner');
+				$user->addOption($option);
 			}
 			
-			return $res;
+			if($isOnMainList)
+			{
+				$event->sendConfirmationEmailToUser($user,false);
+				return $this->childWithName('mainlist')->handleAjaxRequest();
+			}
+			else
+			{
+				$event->sendConfirmationEmailToUser($user,true);
+				return $this->childWithName('waitinglist')->handleAjaxRequest();
+			}
 		}
 		return parent::handleAjaxRequest();
 	}

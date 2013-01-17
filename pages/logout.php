@@ -7,6 +7,6 @@ require_once 'classes/utilities/Server.php';
 
 use \structures\Session;
 
-Session::unsetKey('user');
+Session::unsetKey('userId');
 
 header("Location: ".Server::getServerRoot());

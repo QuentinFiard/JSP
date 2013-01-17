@@ -25,7 +25,7 @@ require_once('classes/structures/events/WeekendJSP.php');
 			<table>
 				<tr>
 					<th>Évênement</th>
-					<th>UserId</th>
+					<th>Numéro de reservation</th>
 					<th>Prénom</th>
 					<th>Nom</th>
 					<th>Adresse mail</th>
@@ -38,7 +38,7 @@ require_once('classes/structures/events/WeekendJSP.php');
 						</select>
 					</td>
 					<td>
-						<input autocomplete="off" type="text" name="userId" placeholder="userId" />
+						<input autocomplete="off" type="text" name="reservationId" placeholder="reservationId" />
 					</td>
 					<td>
 						<input autocomplete="off" type="text" name="firstname" placeholder="Prénom" />

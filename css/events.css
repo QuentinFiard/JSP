@@ -9,10 +9,10 @@
 
 #events_wrapper {
 	position:absolute;
-	height:510px;
+	height:520px;
 	width:100%;
 	top:50%;
-	margin-top:-250px;
+	margin-top:-255px;
 	text-align: center;
 }
 
@@ -50,7 +50,7 @@
 
 #eventsContent .event > .content {
 	padding:15px 30px;
-	height:480px;
+	height:490px;
 	
 	-webkit-border-radius:5px;
 	-moz-border-radius:5px;
@@ -348,6 +348,8 @@
 	font-size:24px;
 	text-align:center;
 	font-weight:bold;
+	max-width:70%;
+	margin:0 auto;
 }
 
 #laplagne_logo {

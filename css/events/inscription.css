@@ -13,11 +13,11 @@
 	position:absolute;
 	z-index:2;
 
-	height:550px;
+	height:570px;
 	width:650px;
 	top:50%;
 	left:50%;
-	margin-top:-275px;
+	margin-top:-285px;
 	margin-left:-325px;
 
 	background-color: rgba(255,255,255,0.9);

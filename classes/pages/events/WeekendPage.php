@@ -2,6 +2,8 @@
 
 namespace pages\events;
 
+use pages\admin\AddToMainListPage;
+
 use nav\AdherentKesOnlyEventPage;
 
 use structures\events\WeekendJSP;

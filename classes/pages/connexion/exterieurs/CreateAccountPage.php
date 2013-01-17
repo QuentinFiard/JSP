@@ -128,7 +128,7 @@ class CreateAccountPage extends  UnregisteredOnlyPage {
 				{
 					return $res;
 				}
-				$digest = hex2bin($digest);
+				$digest = Miscellaneous::hex2bin($digest);
 			}
 			
 			try {
@@ -139,7 +139,17 @@ class CreateAccountPage extends  UnregisteredOnlyPage {
 			}
 			
 			$user = Database::shared()->getExternalUserWithEmail($email);
-			$user->sendValidationEmail();
+
+
+			if(isset($_POST['isCadreX']))
+			{
+				$user->sendValidationEmailForCadre();
+			}
+			else
+			{
+				$user->sendValidationEmail();
+			}
+			
 			
 			return $this->childWithName('success')->handleAjaxRequest();
 		}

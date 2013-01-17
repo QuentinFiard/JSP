@@ -16,7 +16,7 @@ global $user;
 		<img class="logo" src="<?php echo Server::getServerRoot();?>img/logo_reveillon_500.png" />
 		<h2>Description de la semaine</h2>
 		<img id="laplagne_logo" class="shadow" src="<?php echo Server::getServerRoot();?>img/laplagne_logo.jpg" />
-		<p>En plus du week-end homonyme, le binet JSP propose à des tarifs plus qu'avantageux une semaine de réveillon au ski du 26 décembre au 5 janvier à La Plagne, au cours de laquelle tu es totalement libre !</p>
+		<p>En plus du week-end homonyme, le binet JSP propose à des tarifs plus qu'avantageux une semaine de réveillon au ski du 29 décembre au 5 janvier à La Plagne, au cours de laquelle tu es totalement libre !</p>
 		<p>La semaine est ouverte à toutes et à tous. Que tu sois un dieu de la glisse ou un débutant,  une çorde (à pointes), un taudis de combat ou même Grouze, la station t’accueillera à bras ouverts.</p>
 	
 		<p class="quote"><em>&laquo; C’était vraiment la meilleure semaine de ma vie. Si seulement je m’en souvenais. &raquo;</em>, Jean de la Corme.</p>
@@ -54,7 +54,7 @@ global $user;
  		
 		<div id="prix_sejour">
 			<h2>Prix du séjour :</h2>
-			<p><?php echo SemaineReveillon::shared()->getPriceAdherentKes(); ?> € pour les X adhérents à la Kès, <?php echo SemaineReveillon::shared()->getPriceExt(); ?> € pour les autres.</p>
+			<p><?php echo SemaineReveillon::shared()->getPriceAdherentKes(); ?> € pour tout le monde.</p>
 		</div>
  
 		<h2>La formule</h2>

@@ -25,7 +25,7 @@ global $user;
 			<h2>Les conditions</h2>
 			<p>Une fois que tu auras cliqué "S'inscrire", ton inscription sera confirmée. Nous t'indiquerons si tu es inscrit(e) sur liste principale ou sur liste d'attente suivant les places disponibles.</p>
 			<p>Tu pourras ensuite personnaliser ton inscription, choisir ta chambre et tes options de location.</p>
-			<p><b>Dans tous les cas, que tu sois inscrit(e) sur liste principale ou sur liste d'attente, transmets nous tes chèques (paiement + caution) le plus rapidement possible !</b> Tu peux nous les donner le midi à Magnan si tu es à l'X, nous les déposer dans la boîte aux lettres des JSP à la Kès, ou nous les envoyer par courrier (pense à écrire ton nom au dos) à l'adresse :</p>
+			<p><b>Dans tous les cas, que tu sois inscrit(e) sur liste principale ou sur liste d'attente, transmets nous tes chèques (paiement + caution) le plus rapidement possible !</b> Tu peux nous les donner le midi au BôB si tu es à l'X, nous les déposer dans la boîte aux lettres des JSP à la Kès, ou nous les envoyer par courrier (pense à écrire ton nom au dos) à l'adresse :</p>
 			<div class="address">
 				Binet JSP<br/>
 				Kès des élèves<br/>

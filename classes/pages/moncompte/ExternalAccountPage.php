@@ -56,7 +56,6 @@ class ExternalAccountPage extends ExternalUserOnlyPage {
 	
 				$user->setLastName($lastname);
 				$user->save();
-				Session::setValueForKey('user', $user);
 	
 				$res['value']=$lastname;
 				$res['success']=true;
@@ -78,7 +77,6 @@ class ExternalAccountPage extends ExternalUserOnlyPage {
 	
 				$user->setLastName($firstname);
 				$user->save();
-				Session::setValueForKey('user', $user);
 	
 				$res['value']=$firstname;
 				$res['success']=true;

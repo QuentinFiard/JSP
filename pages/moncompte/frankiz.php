@@ -12,7 +12,7 @@ global $user;
 $nickname = $user->getNickname();
 $hasNickName = ($nickname!=null && !empty($nickname));
 ?>
-<div class="content frankiz<?php if(!$hasNickName){?> nonickname<?php } ?>" id="monCompteContent">
+<div class="content frankiz<?php if(!$hasNickName){?> nonickname<?php } ?>" id="monCompteContent">
 	<div id="wrapper">
 		<div class="menu">
 			<div class="title">Mon compte</div>

@@ -33,7 +33,7 @@ class FrankizUser extends User {
 		{
 			if(array_key_exists($key, $data))
 			{
-				if($key=='securityLevel' && is_int($data[$key]))
+				if($key=='securityLevel' && !is_object($data[$key]))
 				{
 					$this->$key = SecurityLevel::levelWithLevel($data[$key]);
 				}
@@ -100,7 +100,7 @@ class FrankizUser extends User {
 	}
 
 	public function isAdherentKes() {
-		return $this->isX() && (in_array(strtolower($this->class), array('x2010','x2011')));
+		return $this->isCotisant() || ($this->isX() && (in_array(strtolower($this->class), array('x2010','x2011','x1829'))) && !$this->isNonCotisant());
 	}
 
 	public function isExt() {
@@ -154,6 +154,23 @@ class FrankizUser extends User {
 	public function is2010()
 	{
 		return strtolower($this->class) == 'x2010';
+	}
+	
+	public function is2011()
+	{
+		return strtolower($this->class) == 'x2011';
+	}
+
+	public function isNonCotisant() {
+		return Database::shared()->isFrankizUserNonCotisant($this);
+	}
+
+	public function isCotisant() {
+		return Database::shared()->isFrankizUserCotisant($this);
+	}
+
+	public function getUID() {
+		return $this->uid;
 	}
 }
 

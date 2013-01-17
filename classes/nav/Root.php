@@ -9,6 +9,7 @@ require_once 'classes/pages/ConnectionPage.php';
 require_once 'classes/pages/AdminPage.php';
 require_once 'classes/pages/MyAccountPage.php';
 require_once 'classes/pages/MailConfirmationPage.php';
+require_once 'classes/pages/CadreConfirmationPage.php';
 
 require_once 'classes/utilities/Server.php';
 
@@ -38,11 +39,12 @@ class Root extends Page {
 		$this->addChild(\pages\AdminPage::getPage());
 		$this->addChild(\pages\MyAccountPage::getPage());
 		$this->addChild(\pages\MailConfirmationPage::getPage());
+		$this->addChild(\pages\CadreConfirmationPage::getPage());
 	}
 	
 	public function checkSecurityGrant() {
 		global $user;
-		if(isset($user) && $user->isRegistered() && !$user->isAdmin())
+		if(isset($user) && $user->isRegistered())
 		{
 			header('Location: '.Server::getServerRoot().'events');
 			exit();

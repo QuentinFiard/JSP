@@ -1,0 +1,21 @@
+\documentclass[a4paper,12pt]{article}
+
+\input{../data}
+\input{packages}
+\input{commandes}
+
+\title{
+\ifthenelse{\group=0}{Listing global}{}
+\ifthenelse{\group=1}{\bus}{}
+\ifthenelse{\group=2}{Bâtiment \batiment}{}\\\vspace{1cm}\large Weekend JSP}
+\date{}
+
+\begin{document}
+
+\pagestyle{empty}
+
+\setmainfont{Helvetica Neue Light}
+\maketitle
+\thispagestyle{empty}
+
+\end{document}

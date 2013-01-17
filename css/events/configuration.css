@@ -1,0 +1,366 @@
+#configurationContent {
+	position:relative;
+}
+
+#configurationContent div, #configurationContent p {
+	font-size:16px;	
+}
+
+#configurationContent #background {
+	position:absolute;
+	width:100%;
+	bottom:0;
+	z-index:1;
+}
+
+#configurationContent .wrapper {
+	position:absolute;
+	z-index:2;
+
+	height:550px;
+	width:700px;
+	top:50%;
+	left:50%;
+	margin-top:-275px;
+	margin-left:-375px;
+
+	background-color: rgba(255,255,255,0.9);
+	
+	-moz-box-shadow:0 0 30px rgba(0,0,0,0.75);
+	-webkit-box-shadow:0 0 30px rgba(0,0,0,0.75);
+	box-shadow:0 0 30px rgba(0,0,0,0.75);
+	
+	
+	-webkit-border-radius:10px;
+	-moz-border-radius:10px;
+	border-radius:10px;
+
+	overflow:hidden;
+}
+
+#configurationContent .wrapper > .title {
+	text-align:center;
+	font-variant: small-caps;
+	font-family: Gill Sans;
+	font-size: 20px;
+	line-height:35px;
+
+	margin-bottom:-10px;
+}
+
+#configurationContent h2:first-of-type {
+}
+
+#configurationContent section {
+	margin-bottom:15px;
+}
+
+#configurationContent h2 {
+	font-size:15px;
+	display:block;
+	clear:both;
+	margin-bottom:5px;
+	font-family:Arial;
+}
+
+#configurationContent .status {
+	display:block;
+	clear:both;
+	font-weight:bold;
+	text-align:center;
+	margin-top:5px;
+}
+
+#configurationContent .status.paid {
+	color:#080;
+}
+
+#configurationContent .status .title, #configurationContent .status .value {
+	display:inline;
+}
+
+#configurationContent .summary_wrapper {
+	overflow:hidden;
+	margin:5px 0 15px;
+}
+
+#configurationContent .summary {
+	float:left;
+	text-align:center;
+}
+
+#configurationContent .summary.first {
+	width:30%;
+}
+
+#configurationContent .summary.second {
+	width:28%;
+}
+
+#configurationContent .summary.third {
+	width:40%;
+}
+
+#configurationContent .summary .title {
+	font-family:Arial;
+	font-weight:bold;
+	font-size:14px;
+}
+
+#configurationContent .summary .value {
+	
+}
+
+#configurationContent .summary ul {
+	max-height:54px;
+}
+
+#configurationContent .address {
+	text-align:center;
+	margin-bottom:10px;
+}
+
+#configurationContent .wrapper .content {
+	font-size:16px;	
+	padding:10px;
+	font-family:Times New Roman;
+}
+
+#configurationContent p {
+	margin-bottom:5px;
+	text-align:justify;
+}
+
+#configurationContent .primaryButton, #configurationContent .warningButton {
+	position:absolute;
+	bottom:9px;
+
+	padding:8px 15px 7px;
+}
+
+#configurationContent label {
+	margin-left:5px;
+	position:relative;
+	top:2px;
+}
+
+#configurationContent form {
+	text-align:center;
+}
+
+#configurationContent #how_to_pay {
+	position:absolute;
+	top:10px;
+	right:10px;
+	bottom:auto;
+	left:auto;
+
+	font-size:12px;
+	line-height:8px;
+	height:8px;
+}
+
+#configurationContent .column {
+	text-align:center;
+}
+
+#configurationContent .column .title {
+	font-family:Arial;
+	font-weight:bold;
+	font-size:14px;
+	margin-bottom:5px;
+}
+
+#configurationContent .column.left {
+	width:38%;	
+	float:left;
+}
+
+#configurationContent .column.right {
+	width:60%;	
+	float:right;
+}
+
+#configurationContent .content {
+	overflow:hidden;
+}
+
+#configurationContent table {
+	width:100%;
+}
+
+#configurationContent table .price {
+	display:inline;
+}
+
+#configurationContent th {
+	padding: 0 5px;
+}
+
+#configurationContent td {
+	text-align:center;
+}
+
+#configurationContent td input {
+	position:relative;
+	top:-2px;
+}
+
+#configurationContent #saveButton {
+	right:10px;
+	display:none;
+	padding:3px 15px 0px;
+}
+
+#configurationContent #cancelButton {
+	padding:3px 15px 0px;	
+	left:10px;
+}
+
+#configurationContent #global_price_display.modified {
+	color:#080;
+}
+
+#configurationContent #afterPaymentLabel {
+	text-align:center;
+	clear:both;
+	position:absolute;
+	bottom:60px;
+}
+
+#configurationContent h2 {
+	text-align:left;
+	margin-bottom:0px;
+}
+
+#configurationContent .subvention {
+	text-align:left;
+	margin-bottom:10px;
+}
+
+#configurationContent .subvention input,#configurationContent .subvention label {
+	display:block;
+	float:left;
+}
+
+#configurationContent .field:first-of-type {
+	margin-top:0px;
+}
+
+#configurationContent .field {
+	overflow:hidden;
+	padding-bottom:5px;
+	line-height:22px;
+	margin-top:-5px;
+}
+
+#configurationContent .field input {
+	margin-left:20px;
+	clear:left;
+	position:relative;
+}
+
+#configurationContent .subvention input {
+	top:4px;
+}
+
+#howToPayBox .alert_box {
+	height:230px;
+	margin-top:-135px;
+}
+
+#howToPayBox .content {
+	font-weight:bold;
+}
+
+#howToPayBox .address {
+	text-align:center;
+	margin-top:15px;
+}
+
+#moreDataNeededBox .field * {
+	display:inline-block;
+	text-align:left;
+}
+
+#moreDataNeededBox .field .name {
+	width:60px;
+}
+
+#moreDataNeededBox .field input {
+	text-align:right;
+}
+
+#moreDataNeededBox .field .unit {
+	width:20px;
+}
+
+#moreDataNeededBox .alert_box {
+	height:230px;
+	margin-top:-135px;
+}
+
+#configurationContent #roomButton, #configurationContent #busButton {
+	display:block;
+	margin:5px 0;	
+	margin-left:20px;
+	
+	position:inherit;
+
+	font-size:12px;
+	line-height:8px;
+	height:8px;
+
+	clear:both;
+}
+
+#configurationContent #inscription_content {
+	position:absolute;
+	top:150px;
+	bottom:46px;
+	right:10px;
+	left:10px;
+	overflow:scroll;
+
+	padding:5px 0 15px;
+	border-top:#ccc 1px solid;
+	border-bottom:#ccc 1px solid;
+}
+
+#configurationContent form .field {
+	text-align:left;
+}
+
+#configurationContent #rentalType {
+	overflow:hidden;
+}
+
+#configurationContent #rentalType .fieldbis:first-of-type {
+	margin-left:20%;
+}
+
+#configurationContent #rentalType .fieldbis {
+	width:30%;
+	float:left;
+	text-align:center;
+}
+
+#configurationContent #rooms, #configurationContent #buses {
+	text-align:left;
+}
+
+
+
+@-moz-document url-prefix() {
+	#configurationContent .primaryButton, #configurationContent .warningButton {
+		padding:5px 15px 10px;
+	}
+	
+	#configurationContent #saveButton {
+		padding:2px 15px 2px;
+	}
+	
+	#configurationContent #cancelButton {
+		padding:2px 15px 2px;
+	}
+}

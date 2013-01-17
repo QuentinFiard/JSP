@@ -80,7 +80,6 @@ class MyAccountPage extends RegisteredOnlyPage {
 				
 				$user->setHeight($height);
 				$user->save();
-				Session::setValueForKey('user', $user);
 				
 				$res['value']=100*$height;
 				$res['success']=true;
@@ -107,7 +106,6 @@ class MyAccountPage extends RegisteredOnlyPage {
 
 				$user->setWeight($weight);
 				$user->save();
-				Session::setValueForKey('user', $user);
 				
 				$res['value']=$weight;
 				$res['success']=true;
@@ -134,7 +132,6 @@ class MyAccountPage extends RegisteredOnlyPage {
 			
 				$user->setSize($size);
 				$user->save();
-				Session::setValueForKey('user', $user);
 				
 				$res['value']=$size;
 				$res['success']=true;

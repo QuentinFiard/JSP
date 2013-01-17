@@ -6,6 +6,7 @@ use pages\events\reveillon\inscription\ConfigurationPage;
 
 require_once 'classes/pages/events/InscriptionPage.php';
 
+require_once 'classes/pages/events/reveillon/inscription/CancelationPage.php';
 require_once 'classes/pages/events/reveillon/inscription/ConfigurationPage.php';
 require_once 'classes/pages/events/reveillon/inscription/WaitingListPage.php';
 require_once 'classes/pages/events/reveillon/inscription/MainListPage.php';
@@ -26,6 +27,7 @@ class InscriptionPage extends \pages\events\InscriptionPage {
 	{
 		parent::__construct("inscription","JSP - Page d'inscription à la semaine du réveillon");
 
+		$this->addChild(\pages\events\reveillon\inscription\CancelationPage::getPage());
 		$this->addChild(\pages\events\reveillon\inscription\ConfigurationPage::getPage());
 		$this->addChild(\pages\events\reveillon\inscription\WaitingListPage::getPage());
 		$this->addChild(\pages\events\reveillon\inscription\MainListPage::getPage());

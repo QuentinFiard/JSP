@@ -74,7 +74,7 @@ class ExternalLoginPage extends LeafPage {
 				{
 					return $res;
 				}
-				$digest = hex2bin($digest);
+				$digest = Miscellaneous::hex2bin($digest);
 			}
 			
 			$user = Database::shared()->getExternalUserWithEmailAndPassword($email,$digest);
@@ -85,7 +85,7 @@ class ExternalLoginPage extends LeafPage {
 				return $res;
 			}
 			
-			Session::setValueForKey('user', $user);
+			Session::setValueForKey('userId', $user->getUserId());
 			
 			$res['success']=true;
 			

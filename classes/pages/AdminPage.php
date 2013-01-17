@@ -7,6 +7,10 @@ require_once 'classes/nav/AdminOnlyPage.php';
 require_once 'classes/pages/admin/RoomsPage.php';
 require_once 'classes/pages/admin/EventOptionsPage.php';
 require_once 'classes/pages/admin/UserPaymentPage.php';
+require_once 'classes/pages/admin/AddToMainListPage.php';
+
+require_once 'classes/pages/admin/AddShotgunReveillonPage.php';
+require_once 'classes/pages/admin/TestUserPage.php';
 
 use nav\AdminOnlyPage;
 
@@ -29,6 +33,9 @@ class AdminPage extends \nav\AdminOnlyPage {
 		$this->addChild(\pages\admin\RoomsPage::getPage());
 		$this->addChild(\pages\admin\EventOptionsPage::getPage());
 		$this->addChild(\pages\admin\UserPaymentPage::getPage());
+		$this->addChild(\pages\admin\AddShotgunReveillonPage::getPage());
+		$this->addChild(\pages\admin\AddToMainListPage::getPage());
+		$this->addChild(\pages\admin\TestUserPage::getPage());
 	}
 }
 

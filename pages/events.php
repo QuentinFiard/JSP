@@ -15,7 +15,6 @@ use \structures\events\SemaineReveillon;
 use \structures\events\WeekendJSP;
 
 global $user;
-
 ?>
 <div class="content" id="eventsContent">
 	<img draggable="false" id="background" src="img/background1.jpg" />
@@ -30,6 +29,23 @@ global $user;
 				if($hasReservation)
 				{
 					$waitingList = $user->isOnWaitingListForEvent($event);
+				}
+				
+				$options = $user->getOptionsForEvent($event);
+				
+				$subvention_name = "none";
+				$subvention_value = 0;
+				$subvention_option = null;
+				
+				foreach($options as $option)
+				{
+					$pos = strpos($option->getName(),'subvention');
+					if(!($pos===false))
+					{
+						$subvention_option = $option;
+						$subvention_name = $option->getName();
+						$subvention_value = $option->getPriceForUser($user);
+					}
 				}
 			?>
 			<div class="event" id="reveillon">
@@ -51,9 +67,16 @@ global $user;
 						<div class="title">Montant payé</div>
 						<div class="content"><?php echo $event->priceForUser($user); ?> € + <?php echo $event->cautionForUser($user); ?> € de caution</div>
 						<?php }
-						if($hasToPay) { ?>
+						else if($hasToPay) { ?>
 						<div class="title">Montant à payer</div>
-						<div class="content"><?php echo $event->priceForUser($user); ?> € + <?php echo $event->cautionForUser($user); ?> € de caution</div>
+						<div class="content">Binet JSP : <?php echo $event->priceForUser($user); ?> €<?php if($subvention_option){ echo ' + '.(-$subvention_value).' € (non encaissé)'; } ?><br/>
+											<?php 
+												if($event==WeekendJSP::shared())
+												{
+													?>'Madame Vacances'<?php
+												} else {
+													?>Belhambra<?php
+												} ?> : <?php echo $event->cautionForUser($user); ?> € de caution</div>
 						<?php } else { ?>
 						<div class="title">Prix de base</div>
 						<div class="content"><?php echo $event->priceForUser($user); ?> €</div>
@@ -69,7 +92,7 @@ global $user;
 							?><div class="status registered">Tu es inscrit(e) à cet évênement !</div><?php
 						}
 					}
-					if($hasToPay) {
+					else if($hasToPay) {
 						?><div class="status waitingForPayment">En attente de réception du paiement.</div><?php
 					}
 					else
@@ -84,24 +107,42 @@ global $user;
 						<div class="badge"><?php
 							if($waitingList)
 							{
-								?>Liste d'attente !<?php
+								?>Liste d'attente ! (Rang <?php echo $event->getPositionInWaitingListForUser($user)+1; ?> sur <?php echo $event->getNbOfReservationsInWaitingList(); ?>)<?php
 							}
 							else 
 							{
-								?>Liste principale !<?php
-							} ?></div>
+								?>Liste principale !<?php if($user->isAdmin())
+								{
+									?> (<?php
+									$placesLeft = $event->getNbOfPlacesLeft();
+									if($placesLeft>=0)
+									{
+										echo $placesLeft;
+										?> place<?php if($placesLeft>1){?>s<?php }?> dispo<?php
+									}
+									else
+									{
+										echo $event->getNbOfReservationsInWaitingList();
+										?> sur liste d'attente<?php
+									}
+									?>)<?php
+								}
+							}
+							?></div>
 					</div>
 					<?php
 					}
 					else
 					{
-						$placesLeft = $event->getNbOfPlacesLeft();?>
+						$placesLeft = $event->getNbOfPlacesLeft();
+						if($event->haveReservationsStarted() || $user->isAdmin())
+						{?>
 					
-					<div class="badge_wrapper<?php if($placesLeft==0){?> full<?php } ?>">
+					<div class="badge_wrapper<?php if($placesLeft<=0){?> full<?php } ?>">
 						<div class="badge"><?php
 							if($placesLeft<=0)
 							{
-								?>Liste d'attente !<?php
+								?>Liste d'attente !<?php if($user->isAdmin()){?> (<?php echo $event->getNbOfReservationsInWaitingList(); ?>)<?php } ?><?php
 							} else if($placesLeft<10)
 							{
 								?>Plus que <?php echo $placesLeft; ?> place<?php if($placesLeft>1){?>s<?php } ?> !<?php
@@ -111,6 +152,7 @@ global $user;
 					</div>
 					
 					<?php
+						}
 					}
 				?>
 				<div class="arrow inscription">
@@ -138,6 +180,23 @@ global $user;
 				{
 					$waitingList = $user->isOnWaitingListForEvent($event);
 				}
+				
+				$options = $user->getOptionsForEvent($event);
+				
+				$subvention_name = "none";
+				$subvention_value = 0;
+				$subvention_option = null;
+				
+				foreach($options as $option)
+				{
+					$pos = strpos($option->getName(),'subvention');
+					if(!($pos===false))
+					{
+						$subvention_option = $option;
+						$subvention_name = $option->getName();
+						$subvention_value = $option->getPriceForUser($user);
+					}
+				}
 			?>
 			<div class="event" id="weekend">
 				<input type="hidden" class="path" value="<?php echo htmlspecialchars($event->getPagePath()); ?>" />
@@ -153,15 +212,21 @@ global $user;
 						<div class="title">Lieu</div>
 						<div class="content">SuperDévoluy</div>
 					</div>
-					
 					<div class="infos">
 						<?php if($reservationComplete) { ?>
 						<div class="title">Montant payé</div>
 						<div class="content"><?php echo $event->priceForUser($user); ?> € + <?php echo $event->cautionForUser($user); ?> € de caution</div>
 						<?php }
-						if($hasToPay) { ?>
+						else if($hasToPay) { ?>
 						<div class="title">Montant à payer</div>
-						<div class="content"><?php echo $event->priceForUser($user); ?> € + <?php echo $event->cautionForUser($user); ?> € de caution</div>
+						<div class="content">Binet JSP : <?php echo $event->priceForUser($user); ?> €<?php if($subvention_option){ echo ' + '.(-$subvention_value).' € (non encaissé)'; } ?><br/>
+											<?php 
+												if($event==WeekendJSP::shared())
+												{
+													?>'Madame Vacances'<?php
+												} else {
+													?>Belhambra<?php
+												} ?> : <?php echo $event->cautionForUser($user); ?> € de caution</div>
 						<?php } else { ?>
 						<div class="title">Prix de base</div>
 						<div class="content"><?php echo $event->priceForUser($user); ?> €</div>
@@ -177,7 +242,7 @@ global $user;
 							?><div class="status registered">Tu es inscrit(e) à cet évênement !</div><?php
 						}
 					}
-					if($hasToPay) {
+					else if($hasToPay) {
 						?><div class="status waitingForPayment">En attente de réception du paiement.</div><?php
 					}
 					else
@@ -192,24 +257,42 @@ global $user;
 						<div class="badge"><?php
 							if($waitingList)
 							{
-								?>Liste d'attente !<?php
+								?>Liste d'attente ! (Rang <?php echo $event->getPositionInWaitingListForUser($user)+1; ?> sur <?php echo $event->getNbOfReservationsInWaitingList(); ?>)<?php
 							}
 							else 
 							{
-								?>Liste principale !<?php
-							} ?></div>
+								?>Liste principale !<?php if($user->isAdmin())
+								{
+									?> (<?php
+									$placesLeft = $event->getNbOfPlacesLeft();
+									if($placesLeft>=0)
+									{
+										echo $placesLeft;
+										?> place<?php if($placesLeft>1){?>s<?php }?> dispo<?php
+									}
+									else
+									{
+										echo $event->getNbOfReservationsInWaitingList();
+										?> sur liste d'attente<?php
+									}
+									?>)<?php
+								}
+							}
+							?></div>
 					</div>
 					<?php
 					}
 					else
 					{
-						$placesLeft = $event->getNbOfPlacesLeft();?>
+						$placesLeft = $event->getNbOfPlacesLeft();
+						if($event->haveReservationsStarted() || $user->isAdmin())
+						{?>
 					
-					<div class="badge_wrapper<?php if($placesLeft==0){?> full<?php } ?>">
+					<div class="badge_wrapper<?php if($placesLeft<=0){?> full<?php } ?>">
 						<div class="badge"><?php
 							if($placesLeft<=0)
 							{
-								?>Liste d'attente !<?php
+								?>Liste d'attente !<?php if($user->isAdmin()){?> (<?php echo $event->getNbOfReservationsInWaitingList(); ?>)<?php } ?><?php
 							} else if($placesLeft<10)
 							{
 								?>Plus que <?php echo $placesLeft; ?> place<?php if($placesLeft>1){?>s<?php } ?> !<?php
@@ -219,6 +302,7 @@ global $user;
 					</div>
 					
 					<?php
+						}
 					}
 				?>
 				<div class="arrow inscription">

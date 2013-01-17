@@ -5,11 +5,14 @@ body, html {
 }
 
 html {
+	min-width:1040px;	
+	min-height:740px;	
 }
 
 body {
 	position:relative;
-	overflow:hidden;
+	overflow:hidden;	
+	min-height:740px;
 }
 
 .empty {
@@ -385,7 +388,7 @@ footer .right {
 	right:50px;
 	height:250px;
 	overflow:hidden;
-	width:200px;
+	width:400px;
 }
 
 footer #sponsors {
@@ -397,7 +400,7 @@ footer #sponsors {
 footer #sponsors .sponsor {
 	height:100%;
 	float:left;
-	padding-left:40px;
+	padding-left:30px;
 }
 
 footer #sponsors .sponsor img {
@@ -409,10 +412,18 @@ footer #sponsors .sponsor img {
 	position:absolute;
 	right:0;
 	bottom:50px;
-	float:right;
 	height:200px;
 	max-width:none;
 	z-index:50;
+}
+
+#copyright {
+	float:right;
+	position:absolute;
+	right:120px;
+	bottom:90px;
+	text-align:right;
+	color:#aaa;
 }
 
 #canvas {
@@ -688,6 +699,7 @@ border: 1px solid black;
 .alert_box .subtitle {
 	font-weight:bold;
 	margin-bottom:10px;
+	line-height:16px;
 }
 
 .alert_box .field {
@@ -718,6 +730,14 @@ border: 1px solid black;
 	position:absolute;
 	left:20px;
 	bottom:40px;
+}
+
+.alert_box .content .primaryButton {
+	bottom:30px;
+}
+
+.alert_box .content .warningButton {
+	bottom:30px;
 }
 
 .alert_box .content_wrapper .primaryButton {
@@ -771,3 +791,19 @@ border: 1px solid black;
 #pernodricard {
 	margin-top:-5px;
 }
+
+#saveLocationBox .alert_box {
+	height:160px;
+	margin-top:-100px;
+}
+
+#cancelReservationBox .alert_box {
+	height:180px;
+	margin-top:-110px;
+}
+
+#mailConfirmationBox .alert_box {
+	height:150px;
+	margin-top:-95px;
+}
+
